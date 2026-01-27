@@ -1,3 +1,4 @@
+// index.js
 import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
@@ -8,20 +9,18 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+// Your route
 app.post("/sendContact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body || {};
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !subject || !message)
       return res.status(400).json({ message: "All fields are required" });
-    }
-
-
-    // Nodemailer setup
+    
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,   
-        pass: process.env.EMAIL_PASS    
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
@@ -34,11 +33,10 @@ app.post("/sendContact", async (req, res) => {
 
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (err) {
-    console.error("Function crashed:", err);  
+    console.error("Function crashed:", err);
     return res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-// Export the app wrapped for Vercel
+// Export handler for Vercel
 export const handler = serverless(app);
