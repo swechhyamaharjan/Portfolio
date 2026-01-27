@@ -1,4 +1,3 @@
-// index.js
 import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
@@ -9,18 +8,19 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Your route
+
 app.post("/sendContact", async (req, res) => {
   try {
     const { name, email, subject, message } = req.body || {};
-    if (!name || !email || !subject || !message)
+    if (!name || !email || !subject || !message) {
       return res.status(400).json({ message: "All fields are required" });
-    
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASS, 
       },
     });
 
@@ -38,5 +38,5 @@ app.post("/sendContact", async (req, res) => {
   }
 });
 
-// Export handler for Vercel
+
 export const handler = serverless(app);
