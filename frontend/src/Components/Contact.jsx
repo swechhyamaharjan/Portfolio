@@ -24,7 +24,7 @@ const Contact = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/sendContact`,
+        `${import.meta.env.VITE_API_URL}/api/sendContact`,
         formData,
         {
           headers: {
