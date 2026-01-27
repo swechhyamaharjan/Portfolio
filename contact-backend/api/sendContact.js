@@ -1,22 +1,32 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import cors from "cors";
+import Cors from "cors";
 
 dotenv.config();
 
-// Wrap your handler to allow CORS
-export default async function handler(req, res) {
-  // Allow requests from your frontend only
-  const allowedOrigin = process.env.FRONTEND_URL;
-  
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+// Initialize CORS middleware
+const cors = Cors({
+  origin: process.env.FRONTEND_URL,
+  methods: ["POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+});
 
-  if (req.method === "OPTIONS") {
-    // Preflight request
-    return res.status(200).end();
-  }
+// Helper to run middleware in serverless functions
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) return reject(result);
+      return resolve(result);
+    });
+  });
+}
+
+export default async function handler(req, res) {
+  // Run CORS
+  await runMiddleware(req, res, cors);
+
+  // Handle preflight OPTIONS
+  if (req.method === "OPTIONS") return res.status(200).end();
 
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
@@ -30,10 +40,7 @@ export default async function handler(req, res) {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
+      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
     });
 
     await transporter.sendMail({
