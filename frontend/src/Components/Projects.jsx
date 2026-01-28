@@ -33,7 +33,7 @@ const Projects = () => {
   ]
 
   return (
-    <section className='min-h-screen px-6 sm:px-8 md:px-16 lg:px-24 pt-15 sm:pt-28 md:pt-32 pb-20 bg-gray-950'>
+    <section className='min-h-screen px-6 sm:px-8 md:px-16 lg:px-24 pt-24 sm:pt-28 md:pt-32 pb-20 bg-gray-950'>
       <div className='w-full max-w-7xl mx-auto'>
         
         {/* Section Header */}

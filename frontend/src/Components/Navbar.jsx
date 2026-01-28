@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+
+  const isActive = (path) => location.pathname === path
 
   return (
     <nav className='fixed top-0 left-0 w-full bg-gray-950 border-b border-purple-200/30 z-50 shadow-lg shadow-purple-200/10'>
@@ -32,33 +35,39 @@ const Navbar = () => {
         {/* Links - Desktop */}
         <ul className='hidden md:flex gap-8 text-gray-300 font-medium text-lg'>
           <li>
-            <Link to="/" className='relative hover:text-purple-200 transition-colors duration-300 group'>
+            <Link to="/" className={`relative transition-colors duration-300 group ${isActive('/') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Home
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-purple-200 group-hover:w-full transition-all duration-300'></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
           <li>
-            <Link to="/about" className='relative hover:text-purple-200 transition-colors duration-300 group'>
+            <Link to="/about" className={`relative transition-colors duration-300 group ${isActive('/about') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               About
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-purple-200 group-hover:w-full transition-all duration-300'></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/about') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
           <li>
-            <Link to="/services" className='relative hover:text-purple-200 transition-colors duration-300 group'>
+            <Link to="/education" className={`relative transition-colors duration-300 group ${isActive('/education') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
+             Education
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/education') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/services" className={`relative transition-colors duration-300 group ${isActive('/services') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Services
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-purple-200 group-hover:w-full transition-all duration-300'></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/services') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
           <li>
-            <Link to="/projects" className='relative hover:text-purple-200 transition-colors duration-300 group'>
+            <Link to="/projects" className={`relative transition-colors duration-300 group ${isActive('/projects') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Projects
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-purple-200 group-hover:w-full transition-all duration-300'></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/projects') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
           <li>
-            <Link to="/skills" className='relative hover:text-purple-200 transition-colors duration-300 group'>
+            <Link to="/skills" className={`relative transition-colors duration-300 group ${isActive('/skills') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Skills
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-purple-200 group-hover:w-full transition-all duration-300'></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/skills') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
           <li>
@@ -73,27 +82,32 @@ const Navbar = () => {
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-96' : 'max-h-0'}`}>
         <ul className='flex flex-col gap-4 px-6 pb-6 text-gray-300 font-medium text-lg'>
           <li>
-            <Link to="/" onClick={() => setIsMenuOpen(false)} className='block hover:text-purple-200 transition-colors duration-300'>
+            <Link to="/" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)} className='block hover:text-purple-200 transition-colors duration-300'>
+            <Link to="/about" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/about') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               About
             </Link>
           </li>
           <li>
-            <Link to="/services" onClick={() => setIsMenuOpen(false)} className='block hover:text-purple-200 transition-colors duration-300'>
+            <Link to="/education" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/education') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
+              Education
+            </Link>
+          </li>
+          <li>
+            <Link to="/services" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/services') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Services
             </Link>
           </li>
           <li>
-            <Link to="/projects" onClick={() => setIsMenuOpen(false)} className='block hover:text-purple-200 transition-colors duration-300'>
+            <Link to="/projects" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/projects') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Projects
             </Link>
           </li>
           <li>
-            <Link to="/skills" onClick={() => setIsMenuOpen(false)} className='block hover:text-purple-200 transition-colors duration-300'>
+            <Link to="/skills" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/skills') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Skills
             </Link>
           </li>

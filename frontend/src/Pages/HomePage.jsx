@@ -5,6 +5,7 @@ import Contact from "../Components/Contact"
 import Projects from "../Components/Projects"
 import Skills from "../Components/Skills"
 import Services from "../Components/Services"
+import Education from "../Components/Education"
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
     <Navbar />
     <Hero />
     <About />
+    <Education />
     <Services/>
     <Skills />
     <Projects />

@@ -9,6 +9,7 @@ import Skills from "./Components/Skills"
 import Contact from "./Components/Contact"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Education from "./Components/Education"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/about" element={<About/>}></Route>
       <Route path="/services" element={<Services/>}></Route>
       <Route path="/projects" element={<Projects/>}></Route>
+      <Route path="/education" element={<Education />}></Route>
       <Route path="/skills" element={<Skills/>}></Route>
       <Route path="/contact" element={<Contact/>}></Route>   
     </Routes>
