@@ -14,9 +14,9 @@ const HomePage = () => {
     <Hero />
     <About />
     <Education />
+    <Projects />
     <Services/>
     <Skills />
-    <Projects />
     <Contact />
     </>
   )

@@ -1,35 +1,35 @@
 import React from 'react'
-import { FaGithub } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'NepaEvents - Event Management System',
-      description: 'A comprehensive full-stack MERN application that allows users to create, manage, and book events online. Features group discounts, QR code generation, promo codes, and a recommendation system for personalized event suggestions.',
-      technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Tailwind CSS', 'Stripe API'],
-      github: 'https://github.com/swechhyamaharjan/NepaEvents',
-      image: 'Event.png',
-      status: 'Completed'
-    },
-    {
-      id: 2,
-      title: 'Gadget E-commerce Website',
-      description: 'A full-stack e-commerce web application for gadgets featuring product listings, cart management, and checkout functionality. Includes user authentication, order management, and secure global state management using Redux. Checkout functionality is managed vai e-sewa gateway.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Redux', 'eSewa API', 'Bootstrap'],
-      github: 'https://github.com/swechhyamaharjan/Gadget-E-commerse-Website',
-      image: 'gadget.png',
-      status: 'Completed'
-    },
-    {
-      id: 3,
       title: 'Recipe Sharing Web App',
       description: 'Building a full-stack web application for sharing, browsing, creating, liking, and bookmarking recipes. Features user-generated content, social interactions, and personalized recipe collections.',
       technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Tailwind CSS'],
       github: 'https://github.com/swechhyamaharjan/RecipeSharingWebApp',
+      demo: 'https://recipe-sharing-frontend-zeta.vercel.app',
       image: 'recipe.png',
-      status: 'In Progress'
-    }
+    },
+    {
+      id: 2,
+      title: 'NepaEvents - Event Management System',
+      description: 'A comprehensive full-stack MERN application that allows users to create, manage, and book events online. Features group discounts, QR code generation, promo codes, and a recommendation system for personalized event suggestions.',
+      technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Tailwind CSS', 'Stripe API'],
+      github: 'https://github.com/swechhyamaharjan/NepaEvents',
+      demo: '',
+      image: 'Event.png',
+    },
+    {
+      id: 3,
+      title: 'Gadget E-commerce Website',
+      description: 'A full-stack e-commerce web application for gadgets featuring product listings, cart management, and checkout functionality. Includes user authentication, order management, and secure global state management using Redux. Checkout functionality is managed vai e-sewa gateway.',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Redux', 'eSewa API', 'Bootstrap'],
+      github: 'https://github.com/swechhyamaharjan/Gadget-E-commerse-Website',
+      demo: '',
+      image: 'gadget.png',
+    },
   ]
 
   return (
@@ -66,11 +66,6 @@ const Projects = () => {
               <div className='p-5 sm:p-6 flex flex-col flex-grow'>
                 <div className='flex items-start justify-between mb-3 gap-2'>
                   <h3 className='text-lg sm:text-xl md:text-2xl font-black text-white leading-tight'>{project.title}</h3>
-                  {project.status === 'In Progress' && (
-                    <span className='px-2 sm:px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-xs font-bold whitespace-nowrap flex-shrink-0'>
-                      In Progress
-                    </span>
-                  )}
                 </div>
                 <p className='text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed flex-grow'>{project.description}</p>
 
@@ -87,7 +82,7 @@ const Projects = () => {
                 </div>
 
                 {/* Links */}
-                <div className='flex gap-4'>
+                <div className='flex gap-3'>
                   <a 
                     href={project.github}
                     target='_blank'
@@ -96,6 +91,15 @@ const Projects = () => {
                   >
                     <FaGithub className='text-lg sm:text-xl' />
                     Code
+                  </a>
+                  <a 
+                    href={project.demo}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors duration-300 font-semibold text-sm sm:text-base'
+                  >
+                    <FaExternalLinkAlt className='text-sm sm:text-base' />
+                    Live Demo
                   </a>
                 </div>
               </div>

@@ -52,16 +52,16 @@ const Navbar = () => {
               <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/education') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
+           <li>
+            <Link to="/projects" className={`relative transition-colors duration-300 group ${isActive('/projects') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
+              Projects
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/projects') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+            </Link>
+          </li>
           <li>
             <Link to="/services" className={`relative transition-colors duration-300 group ${isActive('/services') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
               Services
               <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/services') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/projects" className={`relative transition-colors duration-300 group ${isActive('/projects') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
-              Projects
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-purple-200 transition-all duration-300 ${isActive('/projects') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </li>
           <li>
@@ -97,13 +97,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/services" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/services') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
-              Services
+            <Link to="/projects" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/projects') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
+              Projects
             </Link>
           </li>
           <li>
-            <Link to="/projects" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/projects') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
-              Projects
+            <Link to="/services" onClick={() => setIsMenuOpen(false)} className={`block transition-colors duration-300 ${isActive('/services') ? 'text-purple-200' : 'hover:text-purple-200'}`}>
+              Services
             </Link>
           </li>
           <li>
