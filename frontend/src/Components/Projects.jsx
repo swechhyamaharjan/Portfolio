@@ -27,7 +27,7 @@ const Projects = () => {
       description: 'A full-stack e-commerce web application for gadgets featuring product listings, cart management, and checkout functionality. Includes user authentication, order management, and secure global state management using Redux. Checkout functionality is managed vai e-sewa gateway.',
       technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Redux', 'eSewa API', 'Bootstrap'],
       github: 'https://github.com/swechhyamaharjan/Gadget-E-commerse-Website',
-      demo: '',
+      demo: 'https://gadget-ecommerse.vercel.app',
       image: 'gadget.png',
     },
   ]
